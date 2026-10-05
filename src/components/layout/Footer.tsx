@@ -1,0 +1,223 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { Logo } from "@/components/ui/Logo";
+import { siteConfig } from "@/data/site";
+
+export function Footer() {
+  const hasContact =
+    siteConfig.contact.phone ||
+    siteConfig.contact.whatsapp ||
+    siteConfig.contact.email ||
+    siteConfig.contact.officeLocation;
+
+  const [isVisible, setIsVisible] = useState(false);
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleReducedMotion = () => {
+      if (mediaQuery.matches) {
+        setIsVisible(true);
+      }
+    };
+
+    handleReducedMotion();
+
+    if (mediaQuery.matches) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <footer
+      ref={footerRef}
+      className="bg-[#42182F] text-[#F5F1E9] overflow-x-hidden"
+    >
+      <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16 py-10 sm:py-12 lg:py-14">
+<div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-5 lg:gap-8">
+          <div className={`col-span-2 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <Logo />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#F5F1E9]/80 break-words">
+              {siteConfig.footer.description}
+            </p>
+            {siteConfig.footer.social && siteConfig.footer.social.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-4">
+                {siteConfig.footer.social.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className="text-sm text-[#F5F1E9]/70 transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]"
+                    aria-label={social.label}
+                  >
+                    {social.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+<div className={`col-span-1 min-w-0 transition-all duration-500 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F5F1E9]">Quick Links</h3>
+            <ul className="mt-4 space-y-3 text-sm text-[#F5F1E9]/80">
+              {siteConfig.footer.quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="inline-block transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+<div className={`col-span-1 min-w-0 transition-all duration-500 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F5F1E9]">Our Projects</h3>
+            <ul className="mt-4 space-y-3 text-sm text-[#F5F1E9]/80">
+              {siteConfig.footer.projects.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+className="inline-block break-words transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={`col-span-2 min-w-0 transition-all duration-500 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F5F1E9]">Get in Touch</h3>
+            <div className="mt-4 space-y-3 text-sm text-[#F5F1E9]/80">
+              {siteConfig.contact.phone && (
+                <div>
+                  <Link
+                    href={`tel:${siteConfig.contact.phone.replace(/[^+\d]/g, "")}`}
+                    className="inline-block transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]"
+                  >
+                    Call Now
+                  </Link>
+                </div>
+              )}
+              {siteConfig.contact.whatsapp && (
+                <div>
+                  <a
+                    href={siteConfig.contact.whatsapp}
+                    className="inline-block transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              )}
+              {siteConfig.contact.email && (
+                <div>
+                  <a
+                    href={`mailto:${siteConfig.contact.email}`}
+                    className="inline-block transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F] break-all"
+                  >
+                    Email
+                  </a>
+                </div>
+              )}
+              {siteConfig.contact.officeLocation && (
+                <div>
+                  <span className="break-words">{siteConfig.contact.officeLocation}</span>
+                </div>
+              )}
+              {!hasContact && (
+                <div>
+                  <span className="text-[#F5F1E9]/60 break-words">Contact details will be updated when available.</span>
+                </div>
+              )}
+            </div>
+
+            {siteConfig.footer.newsletter.enabled && (
+              <div className="mt-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F5F1E9]">
+                  {siteConfig.footer.newsletter.heading}
+                </h3>
+                <p className="mt-2 text-sm text-[#F5F1E9]/80 break-words">{siteConfig.footer.newsletter.description}</p>
+                <form className="mt-3 flex flex-col sm:flex-row gap-2" onSubmit={(e) => e.preventDefault()}>
+                  <label htmlFor="newsletter-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="newsletter-email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 rounded-full border border-[#F5F1E9]/30 bg-transparent px-4 py-2 text-sm text-[#F5F1E9] placeholder-[#F5F1E9]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 min-w-0"
+                  />
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center rounded-full bg-[#A65F42] px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#8d5235] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 whitespace-nowrap"
+                    aria-label="Subscribe to newsletter"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 4L10 8L6 12"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-10 sm:mt-12 border-t border-[#F5F1E9]/20 pt-6 sm:pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="w-full text-xs sm:text-sm text-[#F5F1E9]/70 text-center sm:w-auto sm:text-left break-words">
+               © {siteConfig.footer.copyrightYear} {siteConfig.name}. All rights reserved.
+            </p>
+            <div className="flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:w-auto sm:gap-4 text-xs sm:text-sm text-[#F5F1E9]/70">
+              {siteConfig.footer.bottomLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
