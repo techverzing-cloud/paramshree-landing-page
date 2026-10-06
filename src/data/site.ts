@@ -30,28 +30,43 @@ export const siteConfig: SiteConfig = {
     officeLocation: undefined,
   },
   hero: {
-    eyebrow: "EXCLUSIVE CHANNEL PARTNER OF",
-    heading: "SOUL PRAKRITI",
-    subheading: "A New Way of Living, Closer to Nature",
-    description:
-      "Thoughtfully designed farmhouses and villas set in a serene, wellness-focused community by SOUL Agro Farms Pvt. Ltd., powered by ETH Infra Pvt. Ltd.",
+    eyebrow: "CHANNEL PARTNER OF",
+    heading: "Own Your Private Retreat Near Haridwar",
+    subheading: "600 Sq. Yd. Farmhouse | Private Villa | Private Pool | 100+ Experiences",
+    /** Set only once ParamShree approves "Authorised Channel Partner" for use. */
+    badge: undefined,
+    brandLine: "SOUL Prakriti — by SOUL Agrofarms, powered by ETH Infra",
     primaryCta: {
-      label: "Enquire Now",
+      label: "GET PRICE & OFFERS",
       href: "#enquiry",
       variant: "primary",
     },
     secondaryCta: {
-      label: "Visit a Site",
+      label: "WHATSAPP US",
+      href: "#enquiry",
+      variant: "secondary",
+    },
+    tertiaryCta: {
+      label: "BOOK SITE VISIT",
       href: "#enquiry?intent=site-visit",
       variant: "secondary",
     },
-    features: [
-      { label: "Nature Connected Living" },
-      { label: "Wellness Focused Community" },
-      { label: "Thoughtful Landscapes" },
-      { label: "Modern Lifestyle Amenities" },
-    ],
-    backgroundImage: undefined,
+    offer: {
+      heading: "Special Channel Partner Benefits*",
+      items: [
+        "Priority Inventory Assistance",
+        "Payment Plan Assistance",
+        "Site Visit Coordination",
+      ],
+    },
+    whatsapp: {
+      message:
+        "Hi, I would like price and offers for SOUL Prakriti farmhouses and villas. Please share the details.",
+      unconfiguredNotice:
+        "Our WhatsApp number is being confirmed. Please use the enquiry form and our team will get in touch.",
+    },
+    backgroundImage: "/images/gallery/full villa structure at day.jpeg",
+    // Supplied clips are 9-11 MB, too heavy to autoplay behind the fold.
     backgroundVideo: undefined,
   },
   footer: {

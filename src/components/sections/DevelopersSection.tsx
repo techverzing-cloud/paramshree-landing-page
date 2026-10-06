@@ -9,15 +9,15 @@ import type { Developer } from "@/data/developers";
 
 function DeveloperRow({
   developer,
-  isPending,
+  hidden,
   isFirst,
 }: {
   developer: Developer;
-  isPending: boolean;
+  hidden: boolean;
   isFirst: boolean;
 }) {
   const isImageRight = developer.layout === "image-right";
-  const state = isPending ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0";
+  const state = hidden ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0";
   const logoOrder = isImageRight ? "lg:order-1" : "lg:order-3";
   const imageOrder = isImageRight ? "lg:order-3" : "lg:order-1";
 
@@ -135,12 +135,13 @@ export function DevelopersSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.disconnect();
-          } else {
-            setIsPending(true);
-          }
+if (entry.isIntersecting) {
+          setIsVisible(true);
+          setIsPending(false);
+          observer.disconnect();
+        } else {
+          setIsPending(true);
+        }
         });
       },
       { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
@@ -212,7 +213,7 @@ export function DevelopersSection() {
             <DeveloperRow
               key={developer.id}
               developer={developer}
-              isPending={isPending}
+              hidden={hidden}
               isFirst={idx === 0}
             />
           ))}

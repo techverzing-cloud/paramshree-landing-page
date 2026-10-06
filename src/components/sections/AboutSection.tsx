@@ -2,7 +2,27 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { BadgeCheck, Expand, FileText, Home, Leaf, MapPin, Shield, Sparkles, User } from "lucide-react";
 import { aboutData } from "@/data/about";
+import type { AboutAdvantage, AboutPillar } from "@/data/about";
+import { ctaConfig } from "@/data/cta";
+import { EnquiryButton } from "@/components/ui/EnquiryButton";
+
+const pillarIcons: Record<AboutPillar["icon"], React.ReactNode> = {
+  space: <Expand className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />,
+  privacy: <Shield className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />,
+  nature: <Leaf className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />,
+  experience: <Sparkles className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />,
+};
+
+const advantageIcons: Record<AboutAdvantage["icon"], React.ReactNode> = {
+  "badge-check": <BadgeCheck className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />,
+  sparkles: <Sparkles className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />,
+  home: <Home className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />,
+  "map-pin": <MapPin className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />,
+  "file-text": <FileText className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />,
+  user: <User className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />,
+};
 
 const iconComponents = {
   "user-check": (
@@ -132,9 +152,128 @@ export function AboutSection() {
               <div className="relative h-48 sm:h-56 md:h-52 lg:h-56 w-full overflow-hidden">
                 <Image src={card.imagePath} alt={card.altText} width={800} height={600} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
               </div>
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#42182F]">{card.title}</h3>
-                <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#35312F]">{card.description}</p>
+              <div className="flex h-full flex-1 flex-col p-6 sm:p-7">
+                {card.priceAdvantage ? (
+                  <>
+                    <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
+                      {card.priceAdvantage.eyebrow}
+                    </span>
+                    <h3 className="mt-2 font-serif text-xl sm:text-2xl font-semibold text-[#42182F]">
+                      {card.priceAdvantage.heading}
+                    </h3>
+                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#35312F]">
+                      {card.priceAdvantage.description}
+                    </p>
+
+                    <dl className="mt-5 border-y border-[#42182F]/12">
+                      {card.priceAdvantage.facts.map((fact) => (
+                        <div
+                          key={fact.label}
+                          className="flex items-baseline justify-between gap-3 py-2.5"
+                        >
+                          <dt className="text-xs font-medium uppercase tracking-wide text-[#42182F]/70">
+                            {fact.label}
+                          </dt>
+                          <dd className="text-right text-xs font-semibold text-[#42182F]">
+                            {fact.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+
+                    <div className="mt-5">
+                      <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
+                        {card.priceAdvantage.benefitHeading}
+                      </h4>
+                      <p className="mt-1.5 text-[13px] leading-relaxed text-[#35312F]/85">
+                        {card.priceAdvantage.benefitDescription}
+                      </p>
+                    </div>
+
+                    <div className="mt-auto pt-6">
+                      <EnquiryButton
+                        label={card.priceAdvantage.ctaLabel}
+                        href={ctaConfig.enquiry.target}
+                        intent={card.priceAdvantage.ctaIntent}
+                        className="w-full"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {card.eyebrow ? (
+                      <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
+                        {card.eyebrow}
+                      </span>
+                    ) : null}
+                    <h3 className="mt-2 font-serif text-xl sm:text-2xl font-semibold text-[#42182F]">{card.title}</h3>
+                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#35312F]">{card.description}</p>
+
+                    {card.pillars ? (
+                      <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-6 border-t border-[#42182F]/12 pt-6 min-[360px]:grid-cols-2 sm:gap-x-6">
+                        {card.pillars.map((pillar, pillarIdx) => (
+                          <li
+                            key={pillar.title}
+                            className={`group/pillar flex flex-col transition-transform duration-300 hover:-translate-y-0.5 min-[360px]:even:border-l min-[360px]:even:border-[#42182F]/12 min-[360px]:even:pl-5 sm:min-[360px]:even:pl-6 ${featureRevealClass}`}
+                            style={{ animationDelay: `${isVisible ? 850 + pillarIdx * 120 : 0}ms` }}
+                          >
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#A65F42]/60 text-[#A65F42] transition-transform duration-300 group-hover/pillar:scale-110 motion-reduce:group-hover/pillar:scale-100 motion-reduce:hover:translate-y-0">
+                              {pillarIcons[pillar.icon]}
+                            </span>
+                            <h4 className="mt-3 font-serif text-base sm:text-lg font-semibold uppercase tracking-wide text-[#42182F]">
+                              {pillar.title}
+                            </h4>
+                            <p className="mt-1.5 text-[13px] leading-relaxed text-[#35312F]/85">
+                              {pillar.description}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {card.advantages ? (
+                      <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 border-t border-[#42182F]/12 pt-5 min-[360px]:grid-cols-2">
+                        {card.advantages.map((advantage, advantageIdx) => (
+                          <li
+                            key={advantage.title}
+                            className={`flex flex-col gap-2 ${featureRevealClass}`}
+                            style={{ animationDelay: `${isVisible ? 850 + advantageIdx * 120 : 0}ms` }}
+                          >
+                            <span className="flex items-center gap-2.5">
+                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#A65F42]/60 text-[#A65F42]">
+                                {advantageIcons[advantage.icon]}
+                              </span>
+                              <h4 className="font-serif text-sm font-semibold uppercase leading-tight tracking-wide text-[#42182F] sm:text-base">
+                                {advantage.title}
+                              </h4>
+                            </span>
+                            <p className="text-[13px] leading-relaxed text-[#35312F]/85">
+                              {advantage.description}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {card.conversion ? (
+                      <div className="mt-auto pt-6">
+                        <div className="border-t border-[#42182F]/12 pt-5">
+                          <p className="text-sm leading-relaxed text-[#42182F]/85">
+                            {card.conversion.hook}
+                          </p>
+                          <div className="mt-4">
+                            <EnquiryButton
+                              label={card.conversion.ctaLabel}
+                              href={ctaConfig.enquiry.target}
+                              intent={card.conversion.ctaIntent}
+                              className="w-full"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
+                  </>
+                )}
               </div>
             </div>
           ))}

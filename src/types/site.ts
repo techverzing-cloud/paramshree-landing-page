@@ -42,12 +42,21 @@ export interface SiteConfig {
     eyebrow: string;
     heading: string;
     subheading: string;
-    description: string;
+    /** Omitted from the page until usage is approved. */
+    badge?: string;
+    brandLine: string;
     primaryCta: CTA;
     secondaryCta: CTA;
-    features: Array<{
-      label: string;
-    }>;
+    tertiaryCta: CTA;
+    offer: {
+      heading: string;
+      items: string[];
+    };
+    whatsapp: {
+      /** Prefilled text. WhatsApp is only opened with it; nothing is sent here. */
+      message: string;
+      unconfiguredNotice: string;
+    };
     backgroundImage?: string;
     backgroundVideo?: string;
   };

@@ -85,7 +85,7 @@ export const videoShowcaseData: VideoShowcaseData = {
       title: "SOUL Prakriti Location",
       subtitle: "Explore the location and surrounding landscape",
       description: "Explore the location and surrounding landscape.",
-      poster: "/images/about-soul-prakriti.jpg",
+      poster: "/images/locationcover.jpeg",
       posterAlt: "Landscaped surroundings at SOUL Prakriti",
       width: 848,
       height: 480,

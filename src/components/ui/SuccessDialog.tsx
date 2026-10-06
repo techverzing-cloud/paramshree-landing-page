@@ -11,7 +11,7 @@ export interface SuccessDialogProps {
   message: string;
   confirmLabel: string;
   closeLabel: string;
-  icon?: "envelope" | "phone";
+  icon?: "envelope" | "phone" | "calendar";
   /** Element that receives focus again on close. Defaults to the trigger. */
   restoreFocusRef?: RefObject<HTMLElement | null>;
 }

@@ -43,7 +43,7 @@ export function SiteVisitCta({
         className={`${shared} ${styles} ${className}`}
       >
         {label}
-        <span className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">
+        <span className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">
           <svg
             width="16"
             height="16"

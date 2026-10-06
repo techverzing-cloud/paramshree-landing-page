@@ -1,90 +1,127 @@
 import { EnquiryButton } from "@/components/ui/EnquiryButton";
 import { SiteVisitCta } from "@/components/ui/SiteVisitCta";
+import { WhatsAppCta } from "@/components/ui/WhatsAppCta";
 import { ctaConfig } from "@/data/cta";
 import { siteConfig } from "@/data/site";
 
+const { hero } = siteConfig;
+
+/**
+ * One class string for all three hero CTAs so they stay identical.
+ * The `!` suffixes (Tailwind v4 important) override the padding, weight,
+ * transition, shadow and focus ring baked into the shared button components,
+ * which also serve the navbar and other sections.
+ */
+const CTA_CLASS =
+  "h-12 w-full whitespace-nowrap rounded-full bg-[#A65F42] px-4! text-sm font-semibold! text-[#F5F1E9] transition-all! duration-300! hover:-translate-y-0.5 hover:shadow-lg! focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5F1E9]! focus-visible:ring-offset-2 focus-visible:ring-offset-[#42182F]!";
+
 export function HeroSection() {
   return (
-    <section className="relative min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[90vh] w-full overflow-hidden bg-[#F5F1E9]">
+    <section className="relative w-full overflow-hidden bg-[#F5F1E9]">
       <div className="absolute inset-0 z-0">
-        {siteConfig.hero.backgroundImage ? (
+        {hero.backgroundImage ? (
           <div
             className="h-full w-full bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${siteConfig.hero.backgroundImage})` }}
+            style={{ backgroundImage: `url(${hero.backgroundImage})` }}
             aria-hidden="true"
           />
-        ) : (
-          <div className="h-full w-full bg-gradient-to-r from-[#42182F]/90 via-[#42182F]/60 to-transparent" aria-hidden="true" />
-        )}
-        {siteConfig.hero.backgroundVideo && (
+        ) : null}
+        {hero.backgroundVideo ? (
           <video
             className="h-full w-full object-cover object-center"
-            src={siteConfig.hero.backgroundVideo}
+            src={hero.backgroundVideo}
             autoPlay
             muted
             loop
             playsInline
             aria-hidden="true"
           />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a0f14]/80 via-[#1a0f14]/50 to-transparent" aria-hidden="true" />
+        ) : null}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#1a0f14]/85 via-[#1a0f14]/60 to-[#1a0f14]/30"
+          aria-hidden="true"
+        />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[90vh] w-full max-w-screen-2xl flex-col justify-center px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-xl sm:max-w-2xl lg:max-w-3xl">
-          <p className="mb-3 sm:mb-4 animate-fade-in-up text-xs font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] md:tracking-[0.4em] text-[#F5F1E9]/80">
-            {siteConfig.hero.eyebrow}
-          </p>
-          <h1 className="mb-4 sm:mb-6 animate-fade-in-up animation-delay-100 font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight tracking-tight text-[#F5F1E9] break-words">
-            {siteConfig.hero.heading}
-          </h1>
-          <p className="mb-4 sm:mb-6 animate-fade-in-up animation-delay-200 text-lg sm:text-xl md:text-2xl font-medium text-[#F5F1E9]/95">
-            {siteConfig.hero.subheading}
-          </p>
-          <p className="mb-6 sm:mb-8 animate-fade-in-up animation-delay-300 max-w-lg sm:max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-[#F5F1E9]/90">
-            {siteConfig.hero.description}
+      <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:px-10 lg:pb-20 lg:pt-40 xl:px-14 2xl:px-16">
+        <div className="max-w-3xl">
+          {hero.badge ? (
+            <p className="mb-3 inline-flex animate-fade-in-up items-center rounded-full border border-[#A65F42]/70 bg-[#A65F42]/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F5F1E9] sm:text-xs">
+              {hero.badge}
+            </p>
+          ) : null}
+
+          <p className="mb-3 animate-fade-in-up text-[11px] font-medium uppercase tracking-[0.25em] text-[#F5F1E9]/80 sm:tracking-[0.35em] sm:text-xs">
+            {hero.eyebrow}
           </p>
 
-          <div className="mb-8 sm:mb-10 animate-fade-in-up animation-delay-400 flex flex-col gap-3 sm:flex-row sm:gap-4">
-<EnquiryButton
-              href={ctaConfig.enquiry.target}
-              intent="enquire"
-              className="w-full sm:w-auto justify-center transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3"
-            />
-            <SiteVisitCta
-              label={siteConfig.hero.secondaryCta.label}
-              variant="secondary"
-              className="w-full sm:w-auto justify-center border-white text-[#F5F1E9] hover:bg-white/10 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3"
-            />
+          <h1 className="mb-4 max-w-[18ch] animate-fade-in-up text-balance font-serif text-[2rem] font-semibold leading-[1.1] tracking-tight text-[#F5F1E9] min-[400px]:text-[2.5rem] sm:text-5xl lg:text-6xl xl:text-7xl">
+            {hero.heading}
+          </h1>
+
+          <p className="mb-2 max-w-[52ch] animate-fade-in-up text-sm font-semibold uppercase leading-relaxed tracking-wide text-[#F5F1E9] sm:text-base md:text-lg">
+            {hero.subheading}
+          </p>
+
+          <p className="mb-6 max-w-[46ch] animate-fade-in-up text-xs leading-relaxed text-[#F5F1E9]/85 sm:text-sm md:text-base">
+            {hero.brandLine}
+          </p>
+
+          <div className="mb-6 max-w-xl animate-fade-in-up rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm sm:p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F5F1E9] sm:text-xs">
+              {hero.offer.heading}
+            </p>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-3 sm:gap-3">
+              {hero.offer.items.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-xs leading-snug text-[#F5F1E9]/95 sm:text-sm"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    className="mt-0.5 flex-shrink-0"
+                  >
+                    <path
+                      d="M13.5 4.5L6 12L2.5 8.5"
+                      stroke="currentColor"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 animate-fade-in-up animation-delay-500">
-            {siteConfig.hero.features.map((feature, idx) => (
-              <div
-                key={feature.label}
-                className="flex items-start sm:items-center gap-2 text-xs sm:text-sm text-[#F5F1E9]/90 animation-delay-600 animate-fade-in-up"
-                style={{ animationDelay: `${600 + idx * 100}ms` }}
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                  className="flex-shrink-0 mt-0.5 sm:mt-0"
-                >
-                  <path
-                    d="M13.5 4.5L6 12L2.5 8.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="break-words">{feature.label}</span>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+            <EnquiryButton
+              href={ctaConfig.enquiry.target}
+              intent="enquire"
+              label={hero.primaryCta.label}
+              tone="ivory"
+              className={CTA_CLASS}
+            />
+            <WhatsAppCta
+              label={hero.secondaryCta.label}
+              showNote={false}
+              message={hero.whatsapp.message}
+              unconfiguredNotice={hero.whatsapp.unconfiguredNotice}
+              className="w-full"
+              buttonClassName={CTA_CLASS}
+            />
+            <SiteVisitCta
+              label={hero.tertiaryCta.label}
+              variant="primary"
+              tone="ivory"
+              className={`${CTA_CLASS} sm:col-span-2 lg:col-span-1`}
+            />
           </div>
         </div>
       </div>

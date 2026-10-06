@@ -153,8 +153,6 @@ export const contactData: ContactSectionData = {
     "SOUL Prakriti Project",
     "SOUL Prakriti Villa",
     "SOUL Prakriti Farmhouse",
-    "A Day at SOUL",
-    "Site Visit",
     "General Enquiry",
   ],
   intentPresets: [

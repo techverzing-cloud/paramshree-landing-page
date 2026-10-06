@@ -374,7 +374,6 @@ export function VideoLightbox({
               muted
               playsInline
               controls
-              allowFullScreen
               preload="metadata"
               aria-label={`${video.label}. ${video.title}.`}
               className="max-h-[62vh] w-auto max-w-full object-contain sm:max-h-[70vh]"
