@@ -86,7 +86,7 @@ function ProjectShowcaseRow({
   return (
     <article className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch lg:gap-6">
       <div
-        className={`relative aspect-[16/10] overflow-hidden rounded-3xl transition-all duration-500 ${
+        className={`relative aspect-[16/10] overflow-hidden rounded-3xl transition-all duration-500 lg:col-span-1 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
@@ -100,7 +100,7 @@ function ProjectShowcaseRow({
       </div>
 
       <div
-        className={`flex flex-col rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 transition-all duration-500 delay-100 sm:p-7 ${
+        className={`flex flex-col rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 transition-all duration-500 delay-100 sm:p-5 min-w-0 lg:col-span-1 w-full max-w-full box-border ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
@@ -128,7 +128,7 @@ function ProjectShowcaseRow({
       </div>
 
       <div
-        className={`grid grid-cols-2 gap-3 transition-all duration-500 delay-200 ${
+        className={`grid grid-cols-2 gap-3 transition-all duration-500 delay-200 lg:col-span-1 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
@@ -149,7 +149,7 @@ function ProjectShowcaseRow({
       </div>
 
       <div
-        className={`transition-all duration-500 delay-300 ${
+        className={`transition-all duration-500 delay-300 lg:col-span-1 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
