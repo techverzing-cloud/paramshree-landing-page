@@ -85,7 +85,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="relative scroll-mt-20 overflow-x-hidden bg-[#F5F1E9] py-14 sm:py-18 lg:py-24">
+    <section id="contact" ref={ref} className="relative scroll-mt-20 overflow-x-hidden bg-[#F5F1E9] py-10 sm:py-14 lg:py-18">
       <div className="relative mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           <div className={`lg:col-span-4 transition-all duration-500 ${state}`}>

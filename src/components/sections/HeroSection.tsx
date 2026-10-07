@@ -43,7 +43,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:px-10 lg:pb-20 lg:pt-40 xl:px-14 2xl:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 pb-10 pt-16 sm:px-6 sm:pb-14 sm:pt-20 lg:px-10 lg:pb-16 lg:pt-24 xl:px-14 2xl:px-16">
         <div className="max-w-3xl">
           {hero.badge ? (
             <p className="mb-3 inline-flex animate-fade-in-up items-center rounded-full border border-[#A65F42]/70 bg-[#A65F42]/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F5F1E9] sm:text-xs">
@@ -51,15 +51,11 @@ export function HeroSection() {
             </p>
           ) : null}
 
-          <p className="mb-3 animate-fade-in-up text-[11px] font-medium uppercase tracking-[0.25em] text-[#F5F1E9]/80 sm:tracking-[0.35em] sm:text-xs">
-            {hero.eyebrow}
-          </p>
-
           <h1 className="mb-4 max-w-[18ch] animate-fade-in-up text-balance font-serif text-[2rem] font-semibold leading-[1.1] tracking-tight text-[#F5F1E9] min-[400px]:text-[2.5rem] sm:text-5xl lg:text-6xl xl:text-7xl">
             {hero.heading}
           </h1>
 
-          <p className="mb-2 max-w-[52ch] animate-fade-in-up text-sm font-semibold uppercase leading-relaxed tracking-wide text-[#F5F1E9] sm:text-base md:text-lg">
+          <p className="mb-2 max-w-[70ch] animate-fade-in-up text-sm font-semibold uppercase leading-relaxed tracking-wide text-[#F5F1E9] sm:text-base md:text-lg">
             {hero.subheading}
           </p>
 
@@ -72,31 +68,41 @@ export function HeroSection() {
               {hero.offer.heading}
             </p>
             <ul className="mt-3 grid gap-2 sm:grid-cols-3 sm:gap-3">
-              {hero.offer.items.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-xs leading-snug text-[#F5F1E9]/95 sm:text-sm"
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    className="mt-0.5 flex-shrink-0"
+              {hero.offer.items.map((item) => {
+                const splitAt = item.lastIndexOf(" ");
+                const head = splitAt > 0 ? item.slice(0, splitAt) : item;
+                const tail = splitAt > 0 ? item.slice(splitAt + 1) : "";
+
+                return (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-xs leading-snug text-[#F5F1E9]/95 sm:text-sm"
                   >
-                    <path
-                      d="M13.5 4.5L6 12L2.5 8.5"
-                      stroke="currentColor"
-                      strokeWidth="1.75"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      className="mt-0.5 flex-shrink-0"
+                    >
+                      <path
+                        d="M13.5 4.5L6 12L2.5 8.5"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span>
+                      {head}{" "}
+                      <br className="hidden sm:block" />
+                      {tail}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

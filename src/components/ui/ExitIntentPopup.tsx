@@ -13,12 +13,16 @@ export function ExitIntentPopup() {
   const [isCallbackOpen, setIsCallbackOpen] = useState(false);
   const callTriggerRef = useRef<HTMLButtonElement>(null);
   const headingId = useId();
+  // Page-session latch: the popup is offered exactly once, even if the cursor
+  // leaves through the top edge again after the user closes it.
+  const hasExited = useRef(false);
 
   useEffect(() => {
     const handleMouseOut = (event: MouseEvent) => {
-      if (event.relatedTarget || event.clientY > 0) {
+      if (event.relatedTarget || event.clientY > 0 || hasExited.current) {
         return;
       }
+      hasExited.current = true;
       setOpen(true);
     };
 

@@ -163,7 +163,7 @@ export function AmenitiesGallerySection() {
     <section
       id={amenitiesGalleryData.id}
       ref={sectionRef}
-      className="relative scroll-mt-20 overflow-x-hidden bg-[#F5F1E9] py-14 sm:py-18 lg:py-24"
+      className="relative scroll-mt-20 overflow-x-hidden bg-[#F5F1E9] py-10 sm:py-14 lg:py-18"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
         <svg

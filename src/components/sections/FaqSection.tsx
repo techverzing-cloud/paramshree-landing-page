@@ -10,7 +10,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id={faqData.id} ref={ref} className="relative overflow-x-hidden bg-[#42182F] py-14 sm:py-18 lg:py-24">
+    <section id={faqData.id} ref={ref} className="relative overflow-x-hidden bg-[#42182F] py-10 sm:py-14 lg:py-18">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <svg viewBox="0 0 120 200" fill="none" className="absolute -left-4 top-10 h-52 w-32 text-[#87917B]/30">
           <path d="M62 190C62 140 60 96 34 46" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />

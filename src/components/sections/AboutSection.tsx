@@ -89,7 +89,7 @@ export function AboutSection() {
 
   return (
     <section id="about" ref={sectionRef} className="bg-[#F5F1E9] overflow-x-hidden">
-      <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16 py-12 sm:py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16 py-10 sm:py-14 lg:py-18">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="flex flex-col">
             <div className={`flex items-center gap-3 transition-all duration-500 ${revealClass}`}>

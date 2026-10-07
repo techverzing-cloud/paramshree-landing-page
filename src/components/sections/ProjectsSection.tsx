@@ -207,7 +207,7 @@ export function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative scroll-mt-20 overflow-x-hidden bg-[#F5F1E9] py-14 sm:py-18 lg:py-24"
+      className="relative scroll-mt-20 overflow-x-hidden bg-[#F5F1E9] py-10 sm:py-14 lg:py-18"
     >
       <div className="relative mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
@@ -235,7 +235,7 @@ export function ProjectsSection() {
         <div
           className={`mt-12 transition-all duration-500 delay-300 sm:mt-16 ${revealClass}`}
         >
-          <ul className="flex snap-x snap-mandatory items-center gap-3 overflow-x-auto pb-4 sm:gap-4 md:gap-5">
+          <ul className="mx-auto flex w-fit max-w-full snap-x snap-mandatory items-center gap-3 overflow-x-auto pb-4 sm:gap-4 md:gap-5">
             {timeline.map((item, idx) => (
               <li
                 key={item.title}

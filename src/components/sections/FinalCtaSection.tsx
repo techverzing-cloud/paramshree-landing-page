@@ -72,7 +72,7 @@ export function FinalCtaSection() {
       id={finalCtaData.id}
       ref={ref}
       aria-labelledby={`${finalCtaData.id}-heading`}
-      className="relative scroll-mt-20 overflow-x-hidden border-t border-[#e6e1d3] bg-[#F5F1E9] py-14 sm:py-16 lg:py-20"
+      className="relative scroll-mt-20 overflow-x-hidden border-t border-[#e6e1d3] bg-[#F5F1E9] py-10 sm:py-14 lg:py-18"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <svg
