@@ -142,7 +142,7 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1">
           {aboutData.cards.map((card, idx) => (
             <div
               key={card.id}
@@ -210,11 +210,11 @@ export function AboutSection() {
                     <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#35312F]">{card.description}</p>
 
                     {card.pillars ? (
-                      <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-6 border-t border-[#42182F]/12 pt-6 min-[360px]:grid-cols-2 sm:gap-x-6">
+                      <ul className="mt-6 flex-1 content-center grid grid-cols-1 gap-x-5 gap-y-7 border-t border-[#42182F]/12 pt-7 min-[360px]:grid-cols-2 sm:gap-x-6">
                         {card.pillars.map((pillar, pillarIdx) => (
                           <li
                             key={pillar.title}
-                            className={`group/pillar flex flex-col transition-transform duration-300 hover:-translate-y-0.5 min-[360px]:even:border-l min-[360px]:even:border-[#42182F]/12 min-[360px]:even:pl-5 sm:min-[360px]:even:pl-6 ${featureRevealClass}`}
+                            className={`group/pillar flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-0.5 min-[360px]:even:border-l min-[360px]:even:border-[#42182F]/12 min-[360px]:even:pl-5 min-[360px]:odd:pr-5 sm:min-[360px]:even:pl-6 sm:min-[360px]:odd:pr-6 ${featureRevealClass}`}
                             style={{ animationDelay: `${isVisible ? 850 + pillarIdx * 120 : 0}ms` }}
                           >
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#A65F42]/60 text-[#A65F42] transition-transform duration-300 group-hover/pillar:scale-110 motion-reduce:group-hover/pillar:scale-100 motion-reduce:hover:translate-y-0">
@@ -223,33 +223,31 @@ export function AboutSection() {
                             <h4 className="mt-3 font-serif text-base sm:text-lg font-semibold uppercase tracking-wide text-[#42182F]">
                               {pillar.title}
                             </h4>
-                            <p className="mt-1.5 text-[13px] leading-relaxed text-[#35312F]/85">
-                              {pillar.description}
-                            </p>
                           </li>
                         ))}
                       </ul>
                     ) : null}
 
+                    {card.pillars ? (
+                      <div className="mt-6 border-t border-[#42182F]/12 pt-5">
+                        <EnquiryButton label="Explore Projects" href="#projects" className="w-full" />
+                      </div>
+                    ) : null}
+
                     {card.advantages ? (
-                      <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 border-t border-[#42182F]/12 pt-5 min-[360px]:grid-cols-2">
+                      <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-6 border-t border-[#42182F]/12 pt-6 min-[360px]:grid-cols-2">
                         {card.advantages.map((advantage, advantageIdx) => (
                           <li
                             key={advantage.title}
-                            className={`flex flex-col gap-2 ${featureRevealClass}`}
+                            className={`flex flex-col items-center gap-3 text-center ${featureRevealClass}`}
                             style={{ animationDelay: `${isVisible ? 850 + advantageIdx * 120 : 0}ms` }}
                           >
-                            <span className="flex items-center gap-2.5">
-                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#A65F42]/60 text-[#A65F42]">
-                                {advantageIcons[advantage.icon]}
-                              </span>
-                              <h4 className="font-serif text-sm font-semibold uppercase leading-tight tracking-wide text-[#42182F] sm:text-base">
-                                {advantage.title}
-                              </h4>
+                            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#A65F42]/60 text-[#A65F42]">
+                              {advantageIcons[advantage.icon]}
                             </span>
-                            <p className="text-[13px] leading-relaxed text-[#35312F]/85">
-                              {advantage.description}
-                            </p>
+                            <h4 className="font-serif text-sm font-semibold uppercase leading-tight tracking-wide text-[#42182F] sm:text-base">
+                              {advantage.title}
+                            </h4>
                           </li>
                         ))}
                       </ul>
