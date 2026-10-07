@@ -86,11 +86,8 @@ export const siteConfig: SiteConfig = {
       { label: "Contact Us", href: "#contact" },
     ],
     projects: [
-      { label: "A Day at SOUL", href: "#projects" },
       { label: "SOUL Prakriti Villa", href: "#projects" },
       { label: "SOUL Prakriti Farmhouse", href: "#projects" },
-      { label: "Location", href: "#location" },
-      { label: "Channel Partner Advantages", href: "#advantages" },
     ],
     social: [],
     newsletter: {
@@ -101,7 +98,7 @@ export const siteConfig: SiteConfig = {
     bottomLinks: [
       { label: "Terms & Conditions", href: "#" },
       { label: "Privacy Policy", href: "#" },
-      { label: "Sitemap", href: "#" },
+
     ],
     copyrightYear: new Date().getFullYear(),
   },
