@@ -175,7 +175,7 @@ export const locationData: LocationSectionData = {
   eyebrow: "PARAMSHREE OFFICE",
   heading: "Our Location",
   description:
-    "ParamShree assists visitors with SOUL Prakriti project information, site visits and personalised guidance. Our office location details are being finalised and will be published here once confirmed.",
+    "ParamShree assists visitors with SOUL Prakriti project information, site visits and personalised guidance. Below is our confirmed office location.",
   items: [
     { label: "Office Location", icon: "pin" },
     { label: "Getting Here", icon: "route" },
@@ -183,12 +183,21 @@ export const locationData: LocationSectionData = {
   ],
   office: {
     name: "ParamShree Office",
-    addressLines: [],
-    city: "",
-    state: "",
-    pinCode: "",
+    addressLines: [
+      "15, DDA Local Shopping Complex, A-Block Ring Road",
+      "Naraina Vihar, New Delhi - 110028",
+    ],
+    city: "New Delhi",
+    state: "Delhi",
+    pinCode: "110028",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=15,+DDA+Local+Shopping+Complex,+A-Block+Ring+Road,+Naraina+Vihar,+New+Delhi+-+110028&output=embed",
+    mapLinkUrl:
+      "https://www.google.com/maps/search/15,+DDA+Local+Shopping+Complex,+A-Block+Ring+Road,+Naraina+Vihar,+New+Delhi+-+110028",
+    gettingHere: "Easily accessible via Ring Road, Naraina Vihar, New Delhi.",
+    nearbyLandmarks: [],
   },
-  pendingNotice: "Office location details will be updated soon",
+  pendingNotice: "",
   pendingValueLabel: "To be confirmed",
 };
 
