@@ -72,7 +72,7 @@ export function ContactSection() {
       if (!addressIsAvailable) {
         return locationData.pendingValueLabel;
       }
-      return [office.name, ...office.addressLines, format].filter(Boolean).join(", ");
+      return office.addressLines.join(", ") || format;
     }
 
     if (key === "gettingHere") {
@@ -81,7 +81,7 @@ export function ContactSection() {
 
     return office.nearbyLandmarks?.length
       ? office.nearbyLandmarks.join(", ")
-      : locationData.pendingValueLabel;
+      : "See map for nearby landmarks";
   };
 
   return (
