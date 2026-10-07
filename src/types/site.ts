@@ -26,6 +26,12 @@ export interface SiteConfig {
     markText?: string;
     wordmark: string;
     channelPartner: string;
+    image?: {
+      src: string;
+      alt: string;
+      width?: number;
+      height?: number;
+    };
   };
   navLinks: NavLink[];
   enquiry: {
