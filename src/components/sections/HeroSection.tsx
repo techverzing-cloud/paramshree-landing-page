@@ -17,7 +17,7 @@ const CTA_CLASS =
 
 export function HeroSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#F5F1E9]">
+    <section className="relative w-full overflow-hidden bg-[#F5F1E9] pt-[72px]">
       <div className="absolute inset-0 z-0">
         {hero.backgroundImage ? (
           <div
@@ -43,7 +43,11 @@ export function HeroSection() {
         />
       </div>
 
+<<<<<<< HEAD
       <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 pb-10 pt-16 sm:px-6 sm:pb-14 sm:pt-20 lg:px-10 lg:pb-16 lg:pt-24 xl:px-14 2xl:px-16">
+=======
+      <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 pb-10 pt-4 sm:px-6 sm:pb-14 sm:pt-6 lg:px-10 lg:pb-20 lg:pt-8 xl:px-14 2xl:px-16">
+>>>>>>> a676a494683ff63de917ea0c66569fbf6fbf3619
         <div className="max-w-3xl">
           {hero.badge ? (
             <p className="mb-3 inline-flex animate-fade-in-up items-center rounded-full border border-[#A65F42]/70 bg-[#A65F42]/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F5F1E9] sm:text-xs">

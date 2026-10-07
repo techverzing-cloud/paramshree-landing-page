@@ -2,12 +2,18 @@ import type { SiteConfig } from "@/types/site";
 
 export const siteConfig: SiteConfig = {
   name: "ParamShree",
-  tagline: "CHANNEL PARTNER",
+  tagline: "ASSOCIATES",
   logo: {
-    svgMark: true,
+    svgMark: false,
     markText: "PS",
     wordmark: "ParamShree",
-    channelPartner: "CHANNEL PARTNER",
+    channelPartner: "ASSOCIATES",
+    image: {
+      src: "/images/logo/logo1.png",
+      alt: "ParamShree logo",
+      width: 1565,
+      height: 1005,
+    },
   },
   navLinks: [
     { label: "About", href: "#about", type: "anchor" },

@@ -30,7 +30,7 @@ export function Navbar() {
     "group inline-flex items-center gap-2 rounded-full border border-[#A65F42] bg-transparent text-[#A65F42] transition-[background-color,color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#A65F42] hover:text-[#F5F1E9] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1E9]";
 
   return (
-    <header className="sticky top-0 z-50 animate-fade-in border-b border-[#d7d0c2] bg-[#F5F1E9]/95 backdrop-blur-sm transition-colors duration-300">
+    <header className="fixed inset-x-0 top-0 z-50 animate-fade-in border-b border-[#d7d0c2] bg-[#F5F1E9]/95 backdrop-blur-sm transition-colors duration-300">
       <nav className="mx-auto flex w-full max-w-screen-2xl px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16 items-center justify-between py-3 sm:py-4">
         <div className="flex items-center min-w-0">
           <Logo />
