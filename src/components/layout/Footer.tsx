@@ -133,7 +133,7 @@ export function Footer() {
           <div className={`min-w-0 transition-all duration-500 delay-500 lg:col-span-2 ${revealClass}`}>
             <h3 className={columnHeadingClass}>Contact Us</h3>
             <ul className="mt-4 space-y-3">
-              {siteConfig.contact.whatsapp && (
+              {/* {siteConfig.contact.whatsapp && (
                 <li>
                   <a
                     href={siteConfig.contact.whatsapp}
@@ -145,7 +145,7 @@ export function Footer() {
                     WhatsApp
                   </a>
                 </li>
-              )}
+              )} */}
               {siteConfig.contact.phone && (
                 <li>
                   <a
@@ -153,7 +153,7 @@ export function Footer() {
                     className={contactRowClass}
                   >
                     <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#A65F42]" aria-hidden="true" />
-                    Call Us
+                    {siteConfig.contact.phone}
                   </a>
                 </li>
               )}
@@ -164,7 +164,7 @@ export function Footer() {
                     className={`${contactRowClass} break-all`}
                   >
                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#A65F42]" aria-hidden="true" />
-                    Email
+                    {siteConfig.contact.email}
                   </a>
                 </li>
               )}

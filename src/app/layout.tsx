@@ -5,8 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ExitIntentPopup } from "@/components/ui/ExitIntentPopup";
 import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
-//Nothing to commit
-//nothing to commit
+import { SmoothScroll } from "@/components/SmoothScroll";
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant-garamond",
   subsets: ["latin"],
@@ -35,6 +34,7 @@ export default function RootLayout({
       className={`${cormorantGaramond.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[#F5F1E9] text-[#35312F]">
+        <SmoothScroll />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

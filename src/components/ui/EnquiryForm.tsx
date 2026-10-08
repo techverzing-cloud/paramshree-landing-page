@@ -111,6 +111,7 @@ export function EnquiryForm() {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const intent = useSyncExternalStore(subscribeToLocation, resolveIntent, getServerIntent);
   const preset = intent
@@ -125,6 +126,10 @@ export function EnquiryForm() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (submitState === "submitting") {
+      return;
+    }
 
     const submission = { ...values, interestedIn };
     const nextErrors = validateValues(submission);
@@ -148,6 +153,7 @@ export function EnquiryForm() {
           ...submission,
           message: submission.message.trim(),
           intent: intent || null,
+          website: honeypotRef.current?.value ?? "",
         }),
       });
 
@@ -402,12 +408,24 @@ export function EnquiryForm() {
         </div>
       </div>
 
+      <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden">
+        <label htmlFor="enquiry-website">Leave this field empty</label>
+        <input
+          id="enquiry-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          ref={honeypotRef}
+        />
+      </div>
+
       <button
         type="submit"
         disabled={submitState === "submitting"}
         className="group mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#A65F42] px-5 py-2.5 text-sm font-medium text-[#F5F1E9] shadow-sm transition-colors duration-200 hover:bg-[#8d5235] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1E9] disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {submitState === "submitting" ? "Submitting…" : submitLabel}
+        {submitState === "submitting" ? "Sending…" : submitLabel}
         <span className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">
           <svg
             width="16"

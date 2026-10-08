@@ -30,11 +30,11 @@ const sections: PolicySection[] = [
     title: "Introduction",
     body: (
       <>
-        <p className={paragraphClass}>
+        {/* <p className={paragraphClass}>
           This Privacy Policy explains how Paramshree Associates (“ParamShree”, “we”, “us” or “our”)
           collects, uses, shares and protects the personal data you give us through this website,
           mainly through the Contact / Enquiry form.
-        </p>
+        </p> */}
         <p className={paragraphClass}>
           The Policy is written with reference to the Digital Personal Data Protection Act, 2023
           (DPDP Act) and the Digital Personal Data Protection Rules, 2025, as they apply to our
@@ -72,9 +72,7 @@ const sections: PolicySection[] = [
           authorised representatives.
         </p>
         <p className={paragraphClass}>
-          Techverzing Technologies designed and maintains this website as our technology service
-          provider. Techverzing Technologies does not decide how your personal data is used and is
-          not the data fiduciary under this Policy.
+          Paramshree Associates designed and maintains this website. Paramshree Associates.
         </p>
         <p className={paragraphClass}>
           Where this website describes a project as being associated with or powered by another
@@ -115,16 +113,16 @@ const sections: PolicySection[] = [
           <li>Mobile / phone number</li>
           <li>Email address</li>
           <li>
-            Your property or project interest — the option you select in the “Interested In” field
+            Your property or project interest - the option you select in the “Interested In” field
             (for example, SOUL Prakriti Villa, SOUL Prakriti Farmhouse or General Enquiry)
           </li>
           <li>Your message or enquiry details, if you choose to write them</li>
           <li>
-            How you reached the form, where applicable — for example, if you arrived through a
+            How you reached the form, where applicable - for example, if you arrived through a
             specific link such as a site-visit enquiry link
           </li>
           <li>
-            A record of your consent — your consent choice, the date and time you gave it, the
+            A record of your consent - your consent choice, the date and time you gave it, the
             version of this Policy you agreed to, and the form it was given through. We do not record
             your IP address or device details with your consent record.
           </li>
@@ -153,11 +151,11 @@ const sections: PolicySection[] = [
       <>
         <ul className={`${listClass} mt-0`}>
           <li>
-            <span className="font-medium text-[#42182F]">Directly from you</span> — when you fill in
+            <span className="font-medium text-[#42182F]">Directly from you</span> - when you fill in
             and submit the Contact / Enquiry form, or any other form that sends details to us.
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Automatically</span> — standard technical
+            <span className="font-medium text-[#42182F]">Automatically</span> - standard technical
             information in server logs when your browser loads the website, as described above.
           </li>
         </ul>
@@ -233,7 +231,7 @@ const sections: PolicySection[] = [
         <p className={paragraphClass}>Here is what happens when you submit the enquiry form:</p>
         <ul className={listClass}>
           <li>
-            Your entries are validated — including the consent box. If required consent has not been
+            Your entries are validated - including the consent box. If required consent has not been
             given, the submission is rejected and your personal data is not sent anywhere.
           </li>
           <li>
@@ -271,7 +269,7 @@ const sections: PolicySection[] = [
           <li>Sales personnel responsible for the property or project you enquired about</li>
           <li>
             Soul Agro Farms Pvt. Ltd. (the project developer) and, where the website identifies it
-            as a project entity, other project entities — only where necessary to respond to your
+            as a project entity, other project entities - only where necessary to respond to your
             enquiry
           </li>
           <li>
@@ -303,20 +301,20 @@ const sections: PolicySection[] = [
         </p>
         <ul className={listClass}>
           <li>
-            <span className="font-medium text-[#42182F]">Techverzing Technologies</span> — website
+            <span className="font-medium text-[#42182F]">Service Provider</span>  - website
             development and maintenance; may access the website’s code and configuration while
             supporting it.
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Website hosting provider</span> — stores
+            <span className="font-medium text-[#42182F]">Website hosting provider</span> - stores
             the website and its server logs on secured infrastructure.
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Email delivery service (Resend)</span> —
+            <span className="font-medium text-[#42182F]">Email delivery service (Resend)</span> -
             sends enquiry notification emails to our team, where enabled.
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Google</span> — Google Sheets may be used
+            <span className="font-medium text-[#42182F]">Google</span> - Google Sheets may be used
             to store enquiries in our own spreadsheet (where enabled), and Google Maps displays the
             project and office locations shown on this website. When a map loads, Google may process
             technical information and use cookies under its own privacy policy (
@@ -331,7 +329,7 @@ const sections: PolicySection[] = [
             ).
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Meta Platforms (WhatsApp)</span> — delivers
+            <span className="font-medium text-[#42182F]">Meta Platforms (WhatsApp)</span> - delivers
             enquiry notifications to our team through WhatsApp Business messaging, where enabled.
           </li>
         </ul>
@@ -353,17 +351,17 @@ const sections: PolicySection[] = [
         </p>
         <ul className={listClass}>
           <li>
-            <span className="font-medium text-[#42182F]">Essential cookies</span> — used only if
+            <span className="font-medium text-[#42182F]">Essential cookies</span> - used only if
             strictly required for the website to function, stay secure or load efficiently (for
             example, cookies set by our hosting provider).
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Analytics and marketing cookies</span> —
+            <span className="font-medium text-[#42182F]">Analytics and marketing cookies</span> -
             not used at present. This website does not currently include Google Analytics, Meta
             Pixel or similar tracking tools.
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Map display</span> — when a Google Map is
+            <span className="font-medium text-[#42182F]">Map display</span> - when a Google Map is
             shown, Google may set or read cookies under its own cookie and privacy policies.
           </li>
         </ul>
@@ -448,23 +446,23 @@ const sections: PolicySection[] = [
         </p>
         <ul className={listClass}>
           <li>
-            <span className="font-medium text-[#42182F]">Right to information</span> — ask what
+            <span className="font-medium text-[#42182F]">Right to information</span> - ask what
             personal data we are processing about you and request a summary of that processing
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Right to correction and update</span> —
+            <span className="font-medium text-[#42182F]">Right to correction and update</span> -
             correct data that is inaccurate, incomplete or out of date
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Right to erasure</span> — request deletion
+            <span className="font-medium text-[#42182F]">Right to erasure</span> - request deletion
             of your personal data where applicable
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Right to withdraw consent</span> — at any
+            <span className="font-medium text-[#42182F]">Right to withdraw consent</span> - at any
             time, as described in the next section
           </li>
           <li>
-            <span className="font-medium text-[#42182F]">Right to grievance redressal</span> —
+            <span className="font-medium text-[#42182F]">Right to grievance redressal</span> -
             raise a concern with us, as described under Grievance Redressal
           </li>
           <li>
@@ -475,7 +473,7 @@ const sections: PolicySection[] = [
         <p className={paragraphClass}>
           To exercise a right, contact us using the details under Contact Us. We may need to verify
           your identity before acting on a request. Some requests may be limited or refused where
-          applicable law permits or requires it — for example, where we must retain certain records
+          applicable law permits or requires it - for example, where we must retain certain records
           to meet a legal obligation. Nothing in this Policy excludes any right available to you
           under applicable law.
         </p>
@@ -514,8 +512,8 @@ const sections: PolicySection[] = [
     body: (
       <>
         <p className={paragraphClass}>
-          If you have a concern about how your personal data is handled — including questions about
-          collection, use, correction, deletion, withdrawal of consent or any other privacy matter —
+          If you have a concern about how your personal data is handled - including questions about
+          collection, use, correction, deletion, withdrawal of consent or any other privacy matter -
           please contact us:
         </p>
         <div className="mt-5 rounded-xl border border-[#d7d0c2] bg-[#FCFAF6] p-5">
@@ -585,7 +583,7 @@ const sections: PolicySection[] = [
     body: (
       <>
         <p className={paragraphClass}>
-          This website may include links to third-party services — for example, a WhatsApp chat
+          This website may include links to third-party services - for example, a WhatsApp chat
           link, a Google Maps link or a link to a project page. These services are operated by
           others and are governed by their own privacy policies and terms. We are not responsible
           for their practices, and we encourage you to read their policies before sharing personal

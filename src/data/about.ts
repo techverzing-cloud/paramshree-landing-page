@@ -69,7 +69,7 @@ export interface AboutSectionData {
 export const aboutData: AboutSectionData = {
   eyebrow: "ABOUT",
   title: "About ParamShree",
-  subtitle: "YOUR TRUSTED CHANNEL PARTNER",
+  subtitle: "Redefining the Real Investment Solutions",
   description:
     "ParamShree is a dedicated channel partner for SOUL Prakriti, working to connect discerning buyers with thoughtfully designed farmhouses and villas. We focus on providing personalised guidance, transparent information and a smooth buying experience, so you can make a confident decision for your dream retreat.",
   trustFeatures: [

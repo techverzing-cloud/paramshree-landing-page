@@ -2,7 +2,7 @@ import type { SiteConfig } from "@/types/site";
 import { PRIVACY_POLICY_PATH } from "@/data/privacy";
 
 export const siteConfig: SiteConfig = {
-  name: "ParamShree",
+  name: "ParamShree Associates",
   tagline: "ASSOCIATES",
   logo: {
     svgMark: false,
@@ -28,12 +28,12 @@ export const siteConfig: SiteConfig = {
     label: "Enquire Now",
   },
   contact: {
-    phone: undefined,
+    phone: "+91-9999999999",
     // Single source of truth for the WhatsApp CTA and the footer link.
     // TODO: replace this placeholder with ParamShree's real, verified WhatsApp
     // number (country code + number, no "+", spaces or dashes).
     whatsapp: "https://wa.me/919999999999",
-    email: undefined,
+    email: "info@paramshree.com",
     officeLocation: undefined,
   },
   hero: {
@@ -59,7 +59,7 @@ export const siteConfig: SiteConfig = {
       variant: "secondary",
     },
     offer: {
-      heading: "Special Channel Partner Benefits*",
+      heading: "Special Privileges for You*",
       items: [
         "Priority Inventory Assistance",
         "Payment Plan Assistance",

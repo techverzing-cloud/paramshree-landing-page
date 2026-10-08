@@ -20,9 +20,9 @@ export const privacyPolicyMeta = {
   lastUpdated: "08 October 2026",
   version: PRIVACY_POLICY_VERSION,
   /** TODO: set the production website URL, e.g. "https://example.com". */
-  websiteUrl: undefined as string | undefined,
+  websiteUrl: "https://www.paramshreeassociates.com" as string | undefined,
   /** TODO: set the official privacy / grievance email before publishing. */
-  grievanceEmail: undefined as string | undefined,
+  grievanceEmail: "info@paramshreeassociates.com" as string | undefined,
   /** Data Fiduciary / website operator. */
   owner: "Paramshree Associates",
 };
@@ -32,8 +32,8 @@ export const privacyPolicyMeta = {
  * placeholders must be replaced before the site goes live.
  */
 export const privacyPlaceholders = {
-  websiteUrl: "[INSERT WEBSITE URL]",
-  grievanceEmail: "[INSERT OFFICIAL PRIVACY / GRIEVANCE EMAIL]",
+  websiteUrl: "https://www.paramshreeassociates.com",
+  grievanceEmail: "info@paramshreeassociates.com",
 } as const;
 
 /** Recorded with every enquiry submission as the consent record. */
