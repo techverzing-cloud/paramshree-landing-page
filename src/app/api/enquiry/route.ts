@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import { contactData } from "@/data/contact";
+import {
+  PRIVACY_POLICY_VERSION,
+  consentRecord,
+  type EnquiryConsentRecord,
+} from "@/data/privacy";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_PATTERN = /^[+]?[\d\s()-]{7,20}$/;
@@ -87,7 +92,17 @@ function escapeHtml(value: string) {
     .replace(/"/g, "&quot;");
 }
 
-function leadSummary(payload: LeadPayload) {
+function buildConsentRecord(): EnquiryConsentRecord {
+  return {
+    consentGiven: true,
+    consentTimestamp: new Date().toISOString(),
+    privacyPolicyVersion: PRIVACY_POLICY_VERSION,
+    consentPurpose: consentRecord.purpose,
+    source: consentRecord.source,
+  };
+}
+
+function leadSummary(payload: LeadPayload, consent: EnquiryConsentRecord) {
   return [
     `Name: ${payload.fullName}`,
     `Phone: ${payload.phone}`,
@@ -95,11 +110,19 @@ function leadSummary(payload: LeadPayload) {
     `Interested In: ${payload.interestedIn}`,
     `Intent: ${payload.intent ?? "not set"}`,
     `Message: ${payload.message || "-"}`,
-    `Submitted At: ${new Date().toISOString()}`,
+    `Submitted At: ${consent.consentTimestamp}`,
+    `Consent Given: ${consent.consentGiven}`,
+    `Consent Timestamp: ${consent.consentTimestamp}`,
+    `Privacy Policy Version: ${consent.privacyPolicyVersion}`,
+    `Consent Purpose: ${consent.consentPurpose}`,
+    `Consent Source: ${consent.source}`,
   ].join("\n");
 }
 
-async function deliverToGoogleSheets(payload: LeadPayload): Promise<ChannelStatus> {
+async function deliverToGoogleSheets(
+  payload: LeadPayload,
+  consent: EnquiryConsentRecord
+): Promise<ChannelStatus> {
   const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
   if (!webhookUrl) {
@@ -117,8 +140,8 @@ async function deliverToGoogleSheets(payload: LeadPayload): Promise<ChannelStatu
         interestedIn: payload.interestedIn,
         message: payload.message,
         intent: payload.intent,
-        consent: payload.consent,
-        submittedAt: new Date().toISOString(),
+        consent,
+        submittedAt: consent.consentTimestamp,
       }),
     });
 
@@ -128,7 +151,10 @@ async function deliverToGoogleSheets(payload: LeadPayload): Promise<ChannelStatu
   }
 }
 
-async function deliverToResend(payload: LeadPayload): Promise<ChannelStatus> {
+async function deliverToResend(
+  payload: LeadPayload,
+  consent: EnquiryConsentRecord
+): Promise<ChannelStatus> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.ENQUIRY_FROM_EMAIL;
 
@@ -156,8 +182,8 @@ async function deliverToResend(payload: LeadPayload): Promise<ChannelStatus> {
         from,
         to,
         subject: `New SOUL Prakriti enquiry - ${payload.interestedIn}`,
-        text: leadSummary(payload),
-        html: `<h2>New SOUL Prakriti enquiry</h2><pre>${escapeHtml(leadSummary(payload))}</pre>`,
+        text: leadSummary(payload, consent),
+        html: `<h2>New SOUL Prakriti enquiry</h2><pre>${escapeHtml(leadSummary(payload, consent))}</pre>`,
       }),
     });
 
@@ -167,7 +193,10 @@ async function deliverToResend(payload: LeadPayload): Promise<ChannelStatus> {
   }
 }
 
-async function deliverToWhatsApp(payload: LeadPayload): Promise<ChannelStatus> {
+async function deliverToWhatsApp(
+  payload: LeadPayload,
+  consent: EnquiryConsentRecord
+): Promise<ChannelStatus> {
   const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
   const recipient = process.env.ENQUIRY_WHATSAPP_TO;
@@ -190,7 +219,10 @@ async function deliverToWhatsApp(payload: LeadPayload): Promise<ChannelStatus> {
           recipient_type: "individual",
           to: recipient.replace(/[^\d]/g, ""),
           type: "text",
-          text: { preview_url: false, body: `New SOUL Prakriti enquiry\n${leadSummary(payload)}` },
+          text: {
+            preview_url: false,
+            body: `New SOUL Prakriti enquiry\n${leadSummary(payload, consent)}`,
+          },
         }),
       }
     );
@@ -216,10 +248,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "validation_failed", errors }, { status: 400 });
   }
 
+  const consent = buildConsentRecord();
+
   const channels = await Promise.all([
-    deliverToGoogleSheets(payload),
-    deliverToResend(payload),
-    deliverToWhatsApp(payload),
+    deliverToGoogleSheets(payload, consent),
+    deliverToResend(payload, consent),
+    deliverToWhatsApp(payload, consent),
   ]);
 
   const delivered = channels.filter((channel) => channel.status === "sent");
