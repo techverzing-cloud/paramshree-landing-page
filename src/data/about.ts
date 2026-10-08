@@ -113,7 +113,7 @@ export const aboutData: AboutSectionData = {
       id: "why-soul-prakriti",
       title: "Why SOUL Prakriti",
       description:
-        "SOUL Prakriti is designed for those seeking more space, privacy and a closer connection with nature — complemented by thoughtfully planned lifestyle, wellness and recreation experiences.",
+        "SOUL Prakriti is designed for those seeking more space, privacy and a closer connection with nature - complemented by thoughtfully planned lifestyle, wellness and recreation experiences.",
       imagePath: "/images/Why Soul Prakriti.png",
       altText: "SOUL Prakriti",
       bgColor: "#d6ddd2",
@@ -149,7 +149,7 @@ export const aboutData: AboutSectionData = {
       eyebrow: "WHY BUY THROUGH PARAMSHREE?",
       title: "Your Advantage Starts Here",
       description:
-        "Buying through ParamShree gives you dedicated guidance throughout your SOUL Prakriti journey — from understanding the project and available options to site visits and documentation.",
+        "Buying through ParamShree gives you dedicated guidance throughout your SOUL Prakriti journey - from understanding the project and available options to site visits and documentation.",
       imagePath: "/images/Why Buy Through ParamShree.jpeg",
       altText: "Villa patio and outdoor living space",
       bgColor: "#f0d8c8",

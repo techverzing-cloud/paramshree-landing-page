@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
     subheading: "600 Sq. Yd. Farmhouse | Private Villa | Private Pool | 100+ Experiences",
     /** Set only once ParamShree approves "Authorised Channel Partner" for use. */
     badge: undefined,
-    brandLine: "SOUL Prakriti — by SOUL Agrofarms, powered by ETH Infra",
+    brandLine: "SOUL Prakriti - by SOUL Agrofarms, powered by ETH Infra",
     primaryCta: {
       label: "GET PRICE & OFFERS",
       href: "#enquiry",

@@ -70,9 +70,9 @@ export const callbackData: CallbackData = {
     preferredTime: "Select preferred time",
   },
   timeOptions: [
-    "Morning — 9:00 AM – 12:00 PM",
-    "Afternoon — 12:00 PM – 3:00 PM",
-    "Evening — 3:00 PM – 6:00 PM",
+    "Morning - 9:00 AM – 12:00 PM",
+    "Afternoon - 12:00 PM – 3:00 PM",
+    "Evening - 3:00 PM – 6:00 PM",
   ],
   submitLabel: "Request a Call Back",
   validation: {

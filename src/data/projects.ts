@@ -77,10 +77,10 @@ export interface ProjectsSectionData {
 }
 
 export const projectsData: ProjectsSectionData = {
-  eyebrow: "08 — A DAY AT SOUL",
+  eyebrow: "08 - A DAY AT SOUL",
   title: "A Day at SOUL",
   subtitle:
-    "From peaceful mornings to memorable evenings, experience a day that feels like a getaway — every day.",
+    "From peaceful mornings to memorable evenings, experience a day that feels like a getaway - every day.",
   timeline: [
     {
       title: "Morning",
@@ -101,7 +101,7 @@ export const projectsData: ProjectsSectionData = {
       imageAlt: "Pool at SOUL Prakriti",
     },
     {
-      // No "Clubhouse" asset in /images/A Day At Soul — pending frame shows.
+      // No "Clubhouse" asset in /images/A Day At Soul - pending frame shows.
       title: "Clubhouse",
       subtitle: "Leisure & Recreation",
       imagePath:"/images/A Day At Soul/ClubHouse.jpg",
@@ -160,31 +160,31 @@ export const projectsData: ProjectsSectionData = {
       },
       {
         path: "/images/villa/villa152.png",
-        altText: "SOUL Prakriti villa — additional view",
+        altText: "SOUL Prakriti villa - additional view",
         width: 1080,
         height: 837,
       },
       {
         path: "/images/villa/villa201.png",
-        altText: "SOUL Prakriti villa — additional view",
+        altText: "SOUL Prakriti villa - additional view",
         width: 783,
         height: 616,
       },
       {
         path: "/images/villa/villa202.png",
-        altText: "SOUL Prakriti villa — additional view",
+        altText: "SOUL Prakriti villa - additional view",
         width: 397,
         height: 632,
       },
       {
         path: "/images/villa/villa203.png",
-        altText: "SOUL Prakriti villa — additional view",
+        altText: "SOUL Prakriti villa - additional view",
         width: 791,
         height: 587,
       },
       {
         path: "/images/villa/villa153.png",
-        altText: "SOUL Prakriti villa — additional view",
+        altText: "SOUL Prakriti villa - additional view",
         width: 385,
         height: 616,
       },
@@ -225,19 +225,19 @@ export const projectsData: ProjectsSectionData = {
       },
       {
         path: "/images/farmhouse/farmhouse2.png",
-        altText: "SOUL Prakriti farmhouse — additional view",
+        altText: "SOUL Prakriti farmhouse - additional view",
         width: 696,
         height: 694,
       },
       {
         path: "/images/farmhouse/farmhouse3.png",
-        altText: "SOUL Prakriti farmhouse — additional view",
+        altText: "SOUL Prakriti farmhouse - additional view",
         width: 470,
         height: 335,
       },
       {
         path: "/images/farmhouse/farmhouse4.png",
-        altText: "SOUL Prakriti farmhouse — additional view",
+        altText: "SOUL Prakriti farmhouse - additional view",
         width: 469,
         height: 273,
       },
@@ -289,7 +289,7 @@ export const projectsData: ProjectsSectionData = {
     map: {
       embedUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13862.00379935839!2d78.24691950649313!3d29.705245151534964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39095e5d6198e929%3A0xa743785f0e953447!2sBhaguwala%2C%20Uttar%20Pradesh%20246749!5e0!3m2!1sen!2sin!4v1791278273653!5m2!1sen!2sin",
-      title: "SOUL Prakriti location map — Bhaguwala, Uttar Pradesh 246749",
+      title: "SOUL Prakriti location map - Bhaguwala, Uttar Pradesh 246749",
     },
   },
 };
