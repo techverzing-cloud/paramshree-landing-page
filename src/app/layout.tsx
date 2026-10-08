@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ExitIntentPopup } from "@/components/ui/ExitIntentPopup";
+import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 //Nothing to commit
 //nothing to commit
 const cormorantGaramond = Cormorant_Garamond({
@@ -38,6 +39,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <ExitIntentPopup />
+        <WhatsAppFloat />
       </body>
     </html>
   );

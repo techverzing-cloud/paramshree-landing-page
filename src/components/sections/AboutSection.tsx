@@ -210,7 +210,7 @@ export function AboutSection() {
                     <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#35312F]">{card.description}</p>
 
                     {card.pillars ? (
-                      <ul className="mt-6 flex-1 content-center grid grid-cols-1 gap-x-5 gap-y-7 border-t border-[#42182F]/12 pt-7 min-[360px]:grid-cols-2 sm:gap-x-6">
+                      <ul className="mt-6 flex-1 content-center grid grid-cols-2 gap-x-5 gap-y-7 border-t border-[#42182F]/12 pt-7 sm:gap-x-6">
                         {card.pillars.map((pillar, pillarIdx) => (
                           <li
                             key={pillar.title}
@@ -235,7 +235,7 @@ export function AboutSection() {
                     ) : null}
 
                     {card.advantages ? (
-                      <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-6 border-t border-[#42182F]/12 pt-6 min-[360px]:grid-cols-2">
+                      <ul className="mt-6 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-[#42182F]/12 pt-6">
                         {card.advantages.map((advantage, advantageIdx) => (
                           <li
                             key={advantage.title}

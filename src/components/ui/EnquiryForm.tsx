@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { contactData } from "@/data/contact";
+import { PRIVACY_POLICY_PATH } from "@/data/privacy";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 
 interface EnquiryFormValues {
@@ -95,7 +97,14 @@ function getServerIntent() {
 }
 
 export function EnquiryForm() {
-  const { fields, consentLabel, submitLabel, description } = contactData.form;
+  const {
+    fields,
+    privacyNotice,
+    consentLabelPrefix,
+    // consentLabelSuffix,
+    submitLabel,
+    description,
+  } = contactData.form;
   const { ref: sectionRef, state: revealState } = useSectionReveal<HTMLDivElement>();
   const [values, setValues] = useState<EnquiryFormValues>(emptyValues);
   const [errors, setErrors] = useState<EnquiryFormErrors>({});
@@ -172,11 +181,11 @@ export function EnquiryForm() {
   };
 
   const inputBase =
-    "w-full rounded-xl border bg-[#F5F1E9] px-4 py-3 text-sm text-[#35312F] placeholder-[#35312F]/50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40";
+    "w-full rounded-xl border bg-[#F5F1E9] px-4 py-2.5 text-sm text-[#35312F] placeholder-[#35312F]/50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40";
   const inputTone = (field: keyof EnquiryFormValues) =>
     `${inputBase} ${errors[field] ? "border-[#A65F42]" : "border-[#d7d0c2] focus:border-[#A65F42]"}`;
 
-  const labelBase = "mb-1.5 block text-xs font-medium uppercase tracking-[0.15em] text-[#42182F]";
+  const labelBase = "mb-1 block text-xs font-medium uppercase tracking-[0.15em] text-[#42182F]";
 
   return (
     <div ref={sectionRef} className={`transition-all duration-500 ${revealState}`}>
@@ -185,7 +194,7 @@ export function EnquiryForm() {
         id={contactData.form.id}
         onSubmit={handleSubmit}
         noValidate
-        className="relative scroll-mt-24 overflow-hidden rounded-2xl border border-[#d7d0c2] bg-[#F5F1E9] p-5 shadow-sm sm:p-6 lg:p-7"
+        className="relative scroll-mt-24 overflow-hidden rounded-2xl border border-[#d7d0c2] bg-[#F5F1E9] p-4 shadow-sm sm:p-5"
       >
         <svg
           viewBox="0 0 120 200"
@@ -220,7 +229,7 @@ export function EnquiryForm() {
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-[#35312F]/80">{description}</p>
 
-      <div className="mt-5 space-y-4">
+      <div className="mt-4 space-y-3">
         <div>
           <label htmlFor="enquiry-fullName" className={labelBase}>
             {fields.fullName} <span className="text-[#A65F42]">*</span>
@@ -243,7 +252,7 @@ export function EnquiryForm() {
           )}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2">
           <div>
             <label htmlFor="enquiry-phone" className={labelBase}>
               {fields.phone} <span className="text-[#A65F42]">*</span>
@@ -344,15 +353,22 @@ export function EnquiryForm() {
           <textarea
             id="enquiry-message"
             name="message"
-            rows={3}
+            style={{
+              height: 96
+            }}
+            rows={2}
             value={values.message}
             onChange={(event) => updateField("message", event.target.value)}
             className={`${inputTone("message")} resize-y`}
           />
         </div>
 
-        <div>
-          <label htmlFor="enquiry-consent" className="flex cursor-pointer items-start gap-3">
+        <div className="rounded-xl border border-[#A65F42]/30 bg-[#FCFAF6] p-3">
+          <p id="enquiry-privacy-notice" className="text-xs leading-relaxed text-[#35312F]/85">
+            {privacyNotice}
+          </p>
+
+          <label htmlFor="enquiry-consent" className="mt-2.5 flex cursor-pointer items-start gap-3">
             <input
               id="enquiry-consent"
               name="consent"
@@ -360,15 +376,26 @@ export function EnquiryForm() {
               checked={values.consent}
               onChange={(event) => updateField("consent", event.target.checked)}
               aria-invalid={Boolean(errors.consent)}
-              aria-describedby={errors.consent ? "enquiry-consent-error" : undefined}
+              aria-describedby={
+                errors.consent
+                  ? "enquiry-privacy-notice enquiry-consent-error"
+                  : "enquiry-privacy-notice"
+              }
               className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded border border-[#d7d0c2] accent-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40"
             />
             <span className="text-xs leading-relaxed text-[#35312F]/85">
-              {consentLabel} <span className="text-[#A65F42]">*</span>
+              {consentLabelPrefix}
+              <Link
+                href={PRIVACY_POLICY_PATH}
+                className="font-medium text-[#A65F42] underline underline-offset-2 transition-colors duration-200 hover:text-[#8d5235] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40"
+              >
+                Privacy Policy
+              </Link>
+              {/* {consentLabelSuffix} <span className="text-[#A65F42]">*</span> */}
             </span>
           </label>
           {errors.consent && (
-            <p id="enquiry-consent-error" className="mt-1.5 text-xs text-[#A65F42]">
+            <p id="enquiry-consent-error" role="alert" className="mt-1.5 text-xs text-[#A65F42]">
               {errors.consent}
             </p>
           )}
@@ -378,7 +405,7 @@ export function EnquiryForm() {
       <button
         type="submit"
         disabled={submitState === "submitting"}
-        className="group mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#A65F42] px-5 py-2.5 text-sm font-medium text-[#F5F1E9] shadow-sm transition-colors duration-200 hover:bg-[#8d5235] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1E9] disabled:cursor-not-allowed disabled:opacity-70"
+        className="group mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#A65F42] px-5 py-2.5 text-sm font-medium text-[#F5F1E9] shadow-sm transition-colors duration-200 hover:bg-[#8d5235] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1E9] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {submitState === "submitting" ? "Submitting…" : submitLabel}
         <span className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">
@@ -404,7 +431,7 @@ export function EnquiryForm() {
       <p
         role="status"
         aria-live="polite"
-        className={`mt-3 min-h-[1.25rem] text-xs leading-relaxed ${
+        className={`mt-2 min-h-[1.25rem] text-xs leading-relaxed ${
           submitState === "success" ? "text-[#35312F]" : "text-[#A65F42]"
         }`}
       >
