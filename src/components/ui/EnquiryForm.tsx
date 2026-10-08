@@ -354,7 +354,7 @@ export function EnquiryForm() {
             id="enquiry-message"
             name="message"
             style={{
-              height: 96
+              height: 97
             }}
             rows={2}
             value={values.message}
