@@ -77,12 +77,12 @@ export function WhatsAppCta({
         {label}
         {arrow}
       </a>
-      {showNote ? (
-        <p className="text-xs text-[#35312F]/65">
+      {/* {showNote ? (
+        <p className="">
           Opens WhatsApp in a new tab with your message prefilled. Nothing is sent until you
           send it there.
         </p>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

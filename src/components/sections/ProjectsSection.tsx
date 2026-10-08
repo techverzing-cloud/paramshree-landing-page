@@ -10,34 +10,39 @@ import {
   Home,
   IndianRupee,
   Layers,
-  Leaf,
   Maximize,
-  Mountain,
-  Route,
 } from "lucide-react";
 import { EnquiryButton } from "@/components/ui/EnquiryButton";
 import { ProjectImageFrame } from "@/components/ui/ProjectImageFrame";
 import { projectsData } from "@/data/projects";
-import type { LocationHighlight, ProjectFact, ProjectShowcase } from "@/data/projects";
+import type { ProjectFact, ProjectShowcase } from "@/data/projects";
 import { ctaConfig } from "@/data/cta";
 
 const factIcons: Record<ProjectFact["icon"], React.ReactNode> = {
   home: <Home className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
-  maximize: <Maximize className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
+  maximize: (
+    <Maximize className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />
+  ),
   eye: <Eye className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
   layers: <Layers className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
-  rupee: <IndianRupee className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
-  calendar: <CalendarClock className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
-  building: <Building2 className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />,
+  rupee: (
+    <IndianRupee className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />
+  ),
+  calendar: (
+    <CalendarClock className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />
+  ),
+  building: (
+    <Building2 className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />
+  ),
 };
 
-const highlightIcons: Record<LocationHighlight["icon"], React.ReactNode> = {
-  route: <Route className="h-5 w-5" strokeWidth={1.6} aria-hidden="true" />,
-  mountain: <Mountain className="h-5 w-5" strokeWidth={1.6} aria-hidden="true" />,
-  leaf: <Leaf className="h-5 w-5" strokeWidth={1.6} aria-hidden="true" />,
-};
-
-function FactsPanel({ facts, isVisible }: { facts: ProjectFact[]; isVisible: boolean }) {
+function FactsPanel({
+  facts,
+  isVisible,
+}: {
+  facts: ProjectFact[];
+  isVisible: boolean;
+}) {
   return (
     <div className="flex flex-col rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 sm:p-7">
       <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
@@ -85,45 +90,47 @@ function ProjectShowcaseRow({
 
   return (
     <article className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch lg:gap-6">
-      <div
-        className={`relative aspect-[16/10] overflow-hidden rounded-3xl transition-all duration-500 lg:col-span-1 ${
-          isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-        }`}
-      >
-        <Image
-          src={showcase.primaryImage.path}
-          alt={showcase.primaryImage.altText}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        className={`flex flex-col rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 transition-all duration-500 delay-100 sm:p-5 min-w-0 lg:col-span-1 w-full max-w-full box-border ${
-          isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-        }`}
-      >
-        <span className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
-          {showcase.eyebrow}
-          <span className="h-px w-6 bg-[#A65F42]/40" />
-        </span>
-        <h3 className="mt-3 font-serif text-2xl font-semibold leading-tight tracking-tight text-[#42182F] sm:text-3xl">
-          {showcase.title}
-        </h3>
-        <p className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-[#A65F42]/90 sm:text-xs">
-          {showcase.subtitle}
-        </p>
-        <p className="mt-4 text-sm leading-relaxed text-[#35312F] sm:text-base">
-          {showcase.description}
-        </p>
-        <div className="mt-auto pt-6">
-          <EnquiryButton
-            label={showcase.cta.label}
-            href={ctaConfig.enquiry.target}
-            intent={showcase.cta.intent}
-            className="w-full"
+      <div className="col-span-2 relative">
+        <div
+          className={`top-0 absolute w-full h-full left-0 aspect-[16/10] overflow-hidden rounded-3xl transition-all duration-500  ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+        >
+          <Image
+            src={showcase.primaryImage.path}
+            alt={showcase.primaryImage.altText}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover scale-105"
           />
+        </div>
+
+        <div
+          className={`flex flex-col rounded-3xl border h-full border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 transition-all duration-500 delay-100 sm:p-5 min-w-0 lg:col-span-1 w-1/2 ml-auto max-w-full box-border ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+        >
+          <span className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
+            {showcase.eyebrow}
+            <span className="h-px w-6 bg-[#A65F42]/40" />
+          </span>
+          <h3 className="mt-3 font-serif text-2xl font-semibold leading-tight tracking-tight text-[#42182F] sm:text-3xl">
+            {showcase.title}
+          </h3>
+          <p className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-[#A65F42]/90 sm:text-xs">
+            {showcase.subtitle}
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-[#35312F] sm:text-base">
+            {showcase.description}
+          </p>
+          <div className="mt-auto pt-6">
+            <EnquiryButton
+              label={showcase.cta.label}
+              href={ctaConfig.enquiry.target}
+              intent={showcase.cta.intent}
+              className="w-full"
+            />
+          </div>
         </div>
       </div>
 
@@ -190,7 +197,7 @@ export function ProjectsSection() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
     );
 
     if (sectionRef.current) {
@@ -200,7 +207,9 @@ export function ProjectsSection() {
     return () => observer.disconnect();
   }, []);
 
-  const revealClass = isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6";
+  const revealClass = isVisible
+    ? "opacity-100 translate-y-0"
+    : "opacity-0 translate-y-6";
   const { timeline, villa, farmhouse, location } = projectsData;
 
   return (
@@ -288,8 +297,10 @@ export function ProjectsSection() {
 
         <div className="mt-14 grid gap-5 sm:mt-16 lg:mt-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)] lg:gap-8">
           <div
-            className={`order-1 rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 transition-all duration-500 delay-100 sm:p-7 lg:order-2 lg:col-start-2 lg:row-start-1 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            className={`rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6 transition-all duration-500 delay-100 sm:p-7 lg:col-start-2 lg:row-start-1 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-6 opacity-0"
             }`}
           >
             <span className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
@@ -302,83 +313,57 @@ export function ProjectsSection() {
             <p className="mt-3 text-sm leading-relaxed text-[#35312F] sm:text-base">
               {location.description}
             </p>
-          </div>
 
-          <div
-            className={`order-2 lg:order-1 lg:col-start-1 lg:row-span-3 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-            }`}
-          >
-            <div className="h-full overflow-hidden rounded-[24px] border border-[#d7d0c2] bg-[#F5F1E9]/60">
-              <iframe
-                src={location.map.embedUrl}
-                title={location.map.title}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-                className="block h-[340px] w-full border-0 md:h-[400px] lg:h-full"
-              />
-            </div>
-          </div>
-
-          <div
-            className={`order-3 grid grid-cols-3 gap-3 transition-all duration-500 delay-200 lg:order-3 lg:col-start-2 lg:row-start-2 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-            }`}
-          >
-            {location.highlights.map((highlight) => (
-              <div
-                key={highlight.title}
-                className="flex flex-col items-center justify-center rounded-2xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-3 text-center sm:p-4"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#A65F42]/60 text-[#A65F42]">
-                  {highlightIcons[highlight.icon]}
-                </span>
-                <p className="mt-2 font-serif text-sm font-semibold leading-tight text-[#42182F] sm:text-base">
-                  {highlight.title}
-                </p>
-                <p className="mt-1 text-[10px] leading-snug text-[#35312F]/70 sm:text-xs">
-                  {highlight.caption}
+            <div className="mt-6 grid gap-6 border-t border-[#d7d0c2] pt-5 sm:grid-cols-2 sm:gap-8">
+              <div>
+                <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
+                  {location.locationLabel}
+                </h4>
+                <p className="mt-2 font-serif text-lg font-semibold leading-snug text-[#42182F]">
+                  {location.locationLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </p>
               </div>
-            ))}
+
+              <div>
+                <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
+                  {location.travelLabel}
+                </h4>
+                <ul className="mt-2 space-y-2">
+                  {location.travelTimes.map((time) => (
+                    <li
+                      key={time.place}
+                      className="flex items-center justify-between gap-3 pb-2 text-sm last:border-0 last:pb-0"
+                    >
+                      <span className="text-[#35312F]">{time.place}</span>
+                      <span className="font-medium text-[#42182F]">
+                        {time.duration}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div
-            className={`order-4 grid gap-3 transition-all duration-500 delay-[300ms] sm:grid-cols-2 lg:order-4 lg:col-start-2 lg:row-start-3 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            className={`relative overflow-hidden rounded-[24px] border border-[#d7d0c2] bg-[#F5F1E9]/60 transition-all duration-500 lg:col-start-1 lg:row-start-1 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-6 opacity-0"
             }`}
           >
-            <div className="rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6">
-              <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
-                {location.locationLabel}
-              </h4>
-              <p className="mt-3 font-serif text-lg font-semibold leading-snug text-[#42182F]">
-                {location.locationLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </p>
-            </div>
-            <div className="rounded-3xl border border-[#d7d0c2] bg-[#F5F1E9]/60 p-6">
-              <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A65F42]">
-                {location.travelLabel}
-              </h4>
-              <ul className="mt-3 space-y-2">
-                {location.travelTimes.map((time) => (
-                  <li
-                    key={time.place}
-                    className="flex items-center justify-between gap-3 pb-2 text-sm last:border-0 last:pb-0"
-                  >
-                    <span className="text-[#35312F]">{time.place}</span>
-                    <span className="font-medium text-[#42182F]">
-                      {time.duration}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <iframe
+              src={location.map.embedUrl}
+              title={location.map.title}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="block h-[340px] w-full border-0 md:h-[400px] lg:absolute lg:inset-0 lg:h-full"
+            />
           </div>
         </div>
       </div>

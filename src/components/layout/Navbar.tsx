@@ -41,7 +41,7 @@ export function Navbar() {
             {siteConfig.navLinks.map((link) => (
               <li key={link.label} className="group">
                 <Link
-                  href={link.href}
+                  href={link.href.startsWith("#") ? `/${link.href}` : link.href}
                   className="relative transition-colors duration-200 group-hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F1E9] after:absolute after:left-0 after:bottom-[-4px] after:h-[1px] after:w-0 after:bg-[#A65F42] after:transition-all after:duration-200 group-hover:after:w-full"
                 >
                   {link.label}
@@ -104,7 +104,7 @@ export function Navbar() {
             {siteConfig.navLinks.map((link) => (
               <li key={link.label}>
                 <Link
-                  href={link.href}
+                  href={link.href.startsWith("#") ? `/${link.href}` : link.href}
                   className="block py-2 transition-colors duration-200 hover:text-[#A65F42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A65F42]/40"
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -1,4 +1,5 @@
 import type { SiteConfig } from "@/types/site";
+import { PRIVACY_POLICY_PATH } from "@/data/privacy";
 
 export const siteConfig: SiteConfig = {
   name: "ParamShree",
@@ -77,7 +78,7 @@ export const siteConfig: SiteConfig = {
   },
   footer: {
     description:
-      "Partnering with SOUL Agro Farms Pvt. Ltd. to bring you SOUL Prakriti  a serene community of farmhouses and villas, powered by ETH Infra Pvt. Ltd.",
+      "Partnering with SOUL Agro Farms Pvt. Ltd. to bring you SOUL Prakriti, a serene community of farmhouses and villas, powered by ETH Infra Pvt. Ltd.",
     quickLinks: [
       { label: "About", href: "#about" },
       { label: "Projects", href: "#projects" },
@@ -86,11 +87,8 @@ export const siteConfig: SiteConfig = {
       { label: "Contact Us", href: "#contact" },
     ],
     projects: [
-      { label: "A Day at SOUL", href: "#projects" },
       { label: "SOUL Prakriti Villa", href: "#projects" },
       { label: "SOUL Prakriti Farmhouse", href: "#projects" },
-      { label: "Location", href: "#location" },
-      { label: "Channel Partner Advantages", href: "#advantages" },
     ],
     social: [],
     newsletter: {
@@ -100,8 +98,7 @@ export const siteConfig: SiteConfig = {
     },
     bottomLinks: [
       { label: "Terms & Conditions", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Sitemap", href: "#" },
+      { label: "Privacy Policy", href: PRIVACY_POLICY_PATH },
     ],
     copyrightYear: new Date().getFullYear(),
   },

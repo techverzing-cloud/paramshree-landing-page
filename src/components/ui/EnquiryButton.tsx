@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/site";
 
 export function EnquiryButton({
@@ -21,7 +22,11 @@ export function EnquiryButton({
   /** Runs after the click, so a mobile menu can close before the scroll. */
   onNavigate?: () => void;
 }) {
-const finalHref = intent ? `${href}${href.includes("?") ? "&" : "?"}intent=${intent}` : href;
+  const pathname = usePathname();
+  const resolvedHref = href.startsWith("#") && pathname !== "/" ? `/${href}` : href;
+  const finalHref = intent
+    ? `${resolvedHref}${resolvedHref.includes("?") ? "&" : "?"}intent=${intent}`
+    : resolvedHref;
   const primaryText = tone === "ivory" ? "text-[#F5F1E9]" : "text-white";
 
   const shared =

@@ -62,7 +62,7 @@ export const developersData: DevelopersSectionData = {
         "SOUL Agro Farms Pvt. Ltd. focuses on nature-centric communities that bring together thoughtful development, wellness and meaningful lifestyle experiences. SOUL Prakriti reflects a vision of living closer to nature while enjoying carefully planned spaces for relaxation and recreation.",
       layout: "image-right",
       logo: {
-        path: "/images/developers/Soul Living Emblem Logo.png",
+        path: "/images/developers/soul-logo1.svg",
         altText: "SOUL Agro Farms Pvt. Ltd. logo",
         width: 320,
         height: 120,
@@ -96,7 +96,7 @@ export const developersData: DevelopersSectionData = {
         "ETH Infra Pvt. Ltd. is a real estate development company focused on quality, thoughtful planning and customer-centric development. Its approach brings together modern infrastructure and carefully planned communities designed around the needs of contemporary living.",
       layout: "image-left",
       logo: {
-        path: "/images/developers/eth_logo_194x80_v2.png",
+        path: "/images/developers/eth_logo.svg",
         altText: "ETH Infra Pvt. Ltd. logo",
         width: 320,
         height: 120,

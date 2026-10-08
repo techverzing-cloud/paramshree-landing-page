@@ -62,6 +62,7 @@ export interface LocationBlock {
   map: {
     /** Exact Google Maps embed for Bhaguwala, Uttar Pradesh 246749. */
     embedUrl: string;
+    linkUrl: string;
     title: string;
   };
 }
@@ -289,7 +290,12 @@ export const projectsData: ProjectsSectionData = {
     map: {
       embedUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13862.00379935839!2d78.24691950649313!3d29.705245151534964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39095e5d6198e929%3A0xa743785f0e953447!2sBhaguwala%2C%20Uttar%20Pradesh%20246749!5e0!3m2!1sen!2sin!4v1791278273653!5m2!1sen!2sin",
+<<<<<<< HEAD
       title: "SOUL Prakriti location map - Bhaguwala, Uttar Pradesh 246749",
+=======
+      linkUrl: "https://www.google.com/maps/search/?api=1&query=Bhaguwala%2C%20Uttar%20Pradesh%20246749",
+      title: "SOUL Prakriti location map — Bhaguwala, Uttar Pradesh 246749",
+>>>>>>> e79d78b86961c214c01654a21438bd023bc8db69
     },
   },
 };

@@ -35,7 +35,9 @@ export interface ContactSectionData {
     id: string;
     heading: string;
     description: string;
-    consentLabel: string;
+    privacyNotice: string;
+    consentLabelPrefix: string;
+    // consentLabelSuffix: string;
     submitLabel: string;
     fields: {
       fullName: string;
@@ -129,8 +131,11 @@ export const contactData: ContactSectionData = {
     id: "enquiry",
     heading: "Enquiry Form",
     description: "Fill in your details and our team will get in touch with you soon.",
-    consentLabel:
-      "I agree to be contacted by ParamShree about my enquiry and accept the relevant privacy terms.",
+    privacyNotice:
+      "Your information is kept private and will only be used to respond to your enquiry and provide the requested project information.",
+    consentLabelPrefix: "I have read and understood the ",
+    // consentLabelSuffix:
+    //   " and consent to Paramshree Associates collecting and processing my personal information to respond to my enquiry and provide information about the property/project I have requested. My enquiry may be shared with the relevant authorised sales representative or project/developer entity where necessary to respond to my request.",
     submitLabel: "Submit Enquiry",
     fields: {
       fullName: "Full Name",
@@ -146,7 +151,7 @@ export const contactData: ContactSectionData = {
       emailRequired: "Please enter your email address.",
       emailInvalid: "Please enter a valid email address.",
       interestedInRequired: "Please select what you are interested in.",
-      consentRequired: "Please accept the consent to continue.",
+      consentRequired: "Please tick the consent box to submit your enquiry.",
     },
   },
   enquiryOptions: [
@@ -175,20 +180,28 @@ export const locationData: LocationSectionData = {
   eyebrow: "PARAMSHREE OFFICE",
   heading: "Our Location",
   description:
-    "ParamShree assists visitors with SOUL Prakriti project information, site visits and personalised guidance. Our office location details are being finalised and will be published here once confirmed.",
+    "ParamShree assists visitors with SOUL Prakriti project information, site visits and personalised guidance. Below is our confirmed office location.",
   items: [
     { label: "Office Location", icon: "pin" },
     { label: "Getting Here", icon: "route" },
-    { label: "Nearby Landmarks", icon: "landmark" },
   ],
   office: {
     name: "ParamShree Office",
-    addressLines: [],
-    city: "",
-    state: "",
-    pinCode: "",
+    addressLines: [
+      "15, DDA Local Shopping Complex, A-Block Ring Road",
+      "Naraina Vihar, New Delhi - 110028",
+    ],
+    city: "New Delhi",
+    state: "Delhi",
+    pinCode: "110028",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=15,+DDA+Local+Shopping+Complex,+A-Block+Ring+Road,+Naraina+Vihar,+New+Delhi+-+110028&output=embed",
+    mapLinkUrl:
+      "https://www.google.com/maps/search/15,+DDA+Local+Shopping+Complex,+A-Block+Ring+Road,+Naraina+Vihar,+New+Delhi+-+110028",
+    gettingHere: "Easily accessible via Ring Road, Naraina Vihar, New Delhi.",
+    nearbyLandmarks: [],
   },
-  pendingNotice: "Office location details will be updated soon",
+  pendingNotice: "",
   pendingValueLabel: "To be confirmed",
 };
 
